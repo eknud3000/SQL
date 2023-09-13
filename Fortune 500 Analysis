@@ -55,3 +55,31 @@ VALUES
     ('Company II', 'Telecommunications', 110.5, 2000, 1, 21, 12, 4.9),
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
+
+
+SELECT industry, ROUND(AVG(revenue),2),
+CASE
+  WHEN AVG(revenue) >= 500 THEN "Tier 5"
+  WHEN AVG(revenue) >= 400 THEN "Tier 4"
+  WHEN AVG(revenue) >= 300 THEN "Tier 3"
+  WHEN AVG(revenue) >= 200 THEN "Tier 2"
+  WHEN AVG(revenue) >= 100 THEN "Tier 1"
+  ELSE "Ground 0" END AS Tier
+FROM fortune_companies
+GROUP BY industry;
+
+SELECT Industry,
+AVG(paid_time_off_days) AS Avg_PTO,
+AVG(avg_employee_tenure) AS Avg_tenure
+FROM fortune_companies
+GROUP BY Industry
+HAVING Avg_tenure >=2
+ORDER BY Avg_tenure DESC;
+
+SELECT company_name, revenue,
+paid_time_off_days AS PTO,
+maternity_leave_weeks AS MLW,
+avg_employee_tenure AS Avg_Tenure,
+WHERE healthcare_benefits = 1 
+AND PTO >=10
+ORDER BY Avg_Tenure DESC;
