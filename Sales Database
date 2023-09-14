@@ -1,4 +1,4 @@
-In this SQL, I am querying a sales database
+In this SQL, I am querying a sales database to answer these questions
 
 #1. How many orders were placed in January? 
 SELECT COUNT(orderid)
@@ -49,3 +49,9 @@ ON Cus.order_id = Feb.orderID
 WHERE Feb.Quantity >=2
 AND length(Feb.orderID) = 6
 AND Feb.orderID <> 'OrderID';
+
+#8 List all the products sold in Los Angeles in February, and include how many of each were sold
+
+SELECT Product, SUM(Quantity) FROM FebSales
+WHERE location LIKE '%Los Angeles%'
+GROUP BY Product;
