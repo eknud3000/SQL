@@ -56,6 +56,7 @@ VALUES
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
 
+1. I arranged the Average revenue for each industry into differnt tiers to see which industry generates the most revenue on average.
 
 SELECT industry, ROUND(AVG(revenue),2),
 CASE
@@ -68,13 +69,19 @@ CASE
 FROM fortune_companies
 GROUP BY industry;
 
-SELECT Industry,
+
+2. I arranged the data to show which industry, on average, holds the longest employees, and how that compares to a benifit like PTO.
+My hypothesis was correct that the industries that kept their employees longer tended to have better benifits like more PTO.
+
+SELECT Industry, 
 AVG(paid_time_off_days) AS Avg_PTO,
 AVG(avg_employee_tenure) AS Avg_tenure
 FROM fortune_companies
 GROUP BY Industry
 HAVING Avg_tenure >=2
 ORDER BY Avg_tenure DESC;
+
+3. I querried the data to see which spesific company would be the best to work for based on benefits, and average tenure,
 
 SELECT company_name, revenue,
 paid_time_off_days AS PTO,
