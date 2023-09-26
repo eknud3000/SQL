@@ -81,7 +81,7 @@ GROUP BY Industry
 HAVING Avg_tenure >=2
 ORDER BY Avg_tenure DESC;
 
-3. I querried the data to see which spesific company would be the best to work for based on benefits, and average tenure,
+3. I queried the data to see which spesific company would be the best to work for based on benefits, and average tenure,
 
 SELECT company_name, revenue,
 paid_time_off_days AS PTO,
